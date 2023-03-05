@@ -11,11 +11,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Install Vercel CLI
+      - name: 安装Vercel
         run: npm install --global vercel@canary
-      - name: Pull Vercel Environment Information
+      - name: 推送Vercel环境信息
         run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
-      - name: Build Project Artifacts
+      - name: 对项目进行打包
         run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
-      - name: Deploy Project Artifacts to Vercel
+      - name: 部署项目
         run: vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
