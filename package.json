@@ -16,6 +16,7 @@
     "@commitlint/cli": "^17.4.4",
     "@commitlint/config-conventional": "^17.4.4",
     "husky": "^8.0.3",
+    "vercel": "^28.16.12",
     "vitepress": "1.0.0-alpha.49"
   }
 }
