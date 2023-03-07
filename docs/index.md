@@ -15,13 +15,13 @@ hero:
     actions:
         - theme: brand
           text: 快速开始💨
-          link: /guide/
+          link: /guide/sv3/quickstart
         - theme: alt
           text: 系列教程
-          link: /guide/features
+          link: /guide/sv3/
         - theme: alt
           text: Git Hub
-          link: /guide/why
+          link: https://github.com/LonelySnowman
 features:
     - icon: 💪
       title: 简单

@@ -41,12 +41,17 @@ const sidebar: DefaultTheme.Sidebar = {
             ]
         },
     ],
-    '/course': [
+    '/course/sv3': [
         {
             text: '基本介绍',
             items: [
-                {text: '项目简介', link: '/introduce/'},
-                {text: '快速开始', link: '/introduce/quickstart'}
+                {text: '教程简介', link: '/course/sv3/'},
+            ]
+        },
+        {
+            text: '搭建脚手架',
+            items: [
+                {text: '搭建基础项目', link: '/course/sv3/createBaseProject'},
             ]
         },
     ],

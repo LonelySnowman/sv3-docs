@@ -15,14 +15,14 @@
 ## 项目作者
 
 > 一个大二的小萌新，热爱前端！O(∩_∩)O！大家一起加油啊！
-
-**GitHub**：[LonelySnowman](https://github.com/LonelySnowman)
-
-**博客**：[雪人的小屋 - 无 限 进 步 ！](https://snowhouse.space/)
+>
+> **GitHub**：[LonelySnowman](https://github.com/LonelySnowman)
+>
+> **博客**：[雪人的小屋 - 无 限 进 步 ！](https://snowhouse.space/)
 
 ## 项目交流
 
-**交流QQ群**：暂未开放
+> **交流QQ群**：暂未开放
 
 ## 项目贡献者
 
