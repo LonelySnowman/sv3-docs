@@ -1,5 +1,4 @@
-<div align="center"><h1>sv3-template</h1></div>
-<div style="display: flex;justify-content: center; align-items: center; flex-wrap: wrap">
+<div class="imgBox">
  <img
     src="https://img.shields.io/badge/-Vite-E34F26?logo=vite&style=flat-square&logoColor=white"
  />
@@ -38,9 +37,19 @@
  />
 </div>
 
-### Vue3 快速开发脚手架
+<style>
+.imgBox {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    flex-wrap: wrap;
+}
+.imgBox *{
+    margin: 3px 3px;
+}
+</style>
 
-官方文档：https://sv3-docs.snowhouse.space/
+### Vue3 快速开发脚手架
 
 -  使用 Vite 进行项目构建
 -  使用 TypeScript

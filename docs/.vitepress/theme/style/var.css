@@ -1,9 +1,24 @@
 :root {
     /* 标题 */
     --vp-home-hero-name-color: transparent;
-    --vp-home-hero-name-background: linear-gradient( 135deg, #F6CEEC 10%, red 100%);
+    --vp-home-hero-name-background: linear-gradient( 135deg, #d98e66 10%, #f2a829 100%);
 
     /* 图标背景 */
-    --vp-home-hero-image-background-image: linear-gradient( 135deg, #F6CEEC 10%, red 100%);
+    --vp-home-hero-image-background-image: linear-gradient( 135deg, #d98e66 10%, #f2a829 100%);
     --vp-home-hero-image-filter: blur(150px);
+
+    /* 按钮背景颜色 */
+    --vp-button-brand-bg: #f2a829;
+    --vp-button-brand-border: #f2a829;
+    --vp-button-brand-hover-bg: #d98e66;
+    --vp-button-brand-hover-border: #d98e66;
+
+
+    /* 将绿色主题色改为橙色 */
+    --vp-c-green: #fab976;
+    --vp-c-green-light: #f8c56e;
+    --vp-c-green-lighter: #f6d365;
+    --vp-c-green-dark: #fbb07b;
+    --vp-c-brand-darker: #fda085;
+
 }

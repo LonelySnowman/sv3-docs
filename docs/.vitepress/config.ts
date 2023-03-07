@@ -33,11 +33,23 @@ const sidebar: DefaultTheme.Sidebar = {
     ],
     '/guide/sv3': [
         {
-            text: '基本介绍',
+            text: 'Sv3-Template',
             items: [
                 {text: '项目简介', link: '/guide/sv3/'},
                 {text: '快速开始', link: '/guide/sv3/quickstart'},
                 {text: '依赖介绍', link: '/guide/sv3/dependency'}
+            ]
+        },
+        {
+            text: '使用指南',
+            items: [
+                {text: 'Router', link: '/guide/sv3/router'},
+                {text: 'Store', link: '/guide/sv3/store'},
+                {text: 'Axios', link: '/guide/sv3/axios'},
+                {text: '项目指令', link: '/guide/sv3/command'},
+                {text: '项目部署', link: '/guide/sv3/deploy'},
+                {text: '项目规范', link: '/guide/sv3/lint'},
+                {text: '跨域', link: '/guide/sv3/proxy'},
             ]
         },
     ],
@@ -61,9 +73,15 @@ export default defineConfig({
     title: 'SV3-Family',
     lang: 'cn-ZH',
     base: '/',
+    head: [
+        [
+            'link',
+            {rel: 'icon', href: 'logo.png'}
+        ]
+    ],
     lastUpdated: true,
     themeConfig: {
-        logo: '/sv3.svg',
+        logo: '/logo.png',
         siteTitle: 'SV3-Family',
         socialLinks: [
             { icon: 'github', link: 'https://github.com/LonelySnowman' }

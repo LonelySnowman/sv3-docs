@@ -64,7 +64,7 @@ sv3-template/
 - 这里我推荐大家使用pnpm进行依赖管理，pnpm的优点大家可在网上查阅，这里就不进行概述了。
 
 ```bash
-pnpm install axios pinia pinia-plugin-persistedstate vue vue-router nprogress
+pnpm install axios pinia pinia-plugin-persistedstate vue vue-router.md nprogress
 
 # 本项目使用 element plus 大家可以根据个人习惯选择自己常用的组件库
 pnpm install element-plus @element-plus/icons-vue
@@ -133,8 +133,8 @@ sv3-template/
 
 ```vue
 <template>
-   <!-- 一般vue项目都会使用vue-router -->
-   <!-- 所以我们这里直接写一个 router-view -->
+   <!-- 一般vue项目都会使用vue-router.md -->
+   <!-- 所以我们这里直接写一个 router.md-view -->
    <router-view></router-view>
 </template>
 <script setup></script>
@@ -266,7 +266,7 @@ views/
 - 这里路径中用到了 `@` 是我们配置的别名，指向了src，在后面会讲解到如何配置
 
 ```ts
-import { createRouter, createWebHashHistory, RouteRecordRaw, RouteRecordRaw } from 'vue-router';
+import { createRouter, createWebHashHistory, RouteRecordRaw, RouteRecordRaw } from 'vue-router.md';
 import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
 
@@ -303,7 +303,7 @@ export default router;
 ```ts
 import { createApp } from 'vue';
 import App from './App.vue';
-import router from '@/router'; // ++
+import router from '@/router.md'; // ++
 import './styles/_reset.scss';
 const app = createApp(App);
 app.use(router); // ++
@@ -330,7 +330,7 @@ export default pinia;
 ```ts
 import { createApp } from 'vue';
 import App from './App.vue';
-import router from '@/router';
+import router from '@/router.md';
 import pinia from '@/store'; // ++
 import './styles/_reset.scss';
 const app = createApp(App);
