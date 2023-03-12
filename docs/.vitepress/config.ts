@@ -64,6 +64,7 @@ const sidebar: DefaultTheme.Sidebar = {
             text: '搭建脚手架',
             items: [
                 {text: '搭建基础项目', link: '/course/sv3/createBaseProject'},
+                {text: '封装常用工具', link: '/course/sv3/encapsulateCode'},
             ]
         },
     ],
