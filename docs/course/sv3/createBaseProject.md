@@ -1,4 +1,4 @@
-# 【从零到一手撕脚手架】第一节，配置基础项目结构， Vite + TypeScrpit + Vue3 初始化项目
+# 【从零到一手撕脚手架 | 第一节】配置基础项目结构  Vite + TypeScrpit + Vue3 初始化项目
 
 > hello大家好我是雪人⛄，不知不觉断更好久了😄，经过了长时间的学习，终于踏入了前端工程化的大门，大家再日常开发中总是会用到一个开发工具：脚手架，大家在使用其他人的脚手架或者一些官方脚手架的时候，可能只懂得使用并不懂得如何实现，看到一些代码只是知其然不知其所以然，今天为大家带来一套教程，教大家入门“脚手架”，相信你一定会有所收获。
 >
@@ -64,7 +64,7 @@ sv3-template/
 - 这里我推荐大家使用pnpm进行依赖管理，pnpm的优点大家可在网上查阅，这里就不进行概述了。
 
 ```bash
-pnpm install axios pinia pinia-plugin-persistedstate vue vue-router.md nprogress
+pnpm install axios pinia pinia-plugin-persistedstate vue vue-router nprogress
 
 # 本项目使用 element plus 大家可以根据个人习惯选择自己常用的组件库
 pnpm install element-plus @element-plus/icons-vue
@@ -133,8 +133,8 @@ sv3-template/
 
 ```vue
 <template>
-   <!-- 一般vue项目都会使用vue-router.md -->
-   <!-- 所以我们这里直接写一个 router.md-view -->
+   <!-- 一般vue项目都会使用vue-router -->
+   <!-- 所以我们这里直接写一个 router-view -->
    <router-view></router-view>
 </template>
 <script setup></script>
@@ -266,7 +266,7 @@ views/
 - 这里路径中用到了 `@` 是我们配置的别名，指向了src，在后面会讲解到如何配置
 
 ```ts
-import { createRouter, createWebHashHistory, RouteRecordRaw, RouteRecordRaw } from 'vue-router.md';
+import { createRouter, createWebHashHistory, RouteRecordRaw, RouteRecordRaw } from 'vue-router';
 import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
 
@@ -303,7 +303,7 @@ export default router;
 ```ts
 import { createApp } from 'vue';
 import App from './App.vue';
-import router from '@/router.md'; // ++
+import router from '@/router'; // ++
 import './styles/_reset.scss';
 const app = createApp(App);
 app.use(router); // ++
@@ -330,7 +330,7 @@ export default pinia;
 ```ts
 import { createApp } from 'vue';
 import App from './App.vue';
-import router from '@/router.md';
+import router from '@/router';
 import pinia from '@/store'; // ++
 import './styles/_reset.scss';
 const app = createApp(App);
@@ -427,6 +427,16 @@ VITE_APP_API_BASEURL = /api
 ```
 
 - 剩下的`.env.[mode]`之后会介绍到，这里我们就先配置这一项即可
+
+**/src/utils/http/index.ts**
+
+```js
+const service: AxiosInstance = axios.create({
+   // 这样我们就可以在环境变量中改变 axios 的 baseURL
+   baseURL: import.meta.env.VITE_APP_API_BASEURL
+   timeout: 15000,
+});
+```
 
 ### 环境变量类型支持
 
@@ -549,68 +559,68 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
 
 ```ts
 {
-    "compilerOptions": {
-        // 编译出JS的目标ES版本
-        "target": "esnext",
-        // 使用的ES版本
-        "module": "esnext",
-        // 用于选择模块解析策略，有'node'和'classic'两种类型
-        "moduleResolution": "node",
-        // 开启严格模式
-        "strict": true,
-        // 强制代码中使用的模块文件名必须和文件系统中的文件名保持大小写一致
-        "forceConsistentCasingInFileNames": true,
-        // 允许使用 xxx 代替 * as xxx 导入
-        "allowSyntheticDefaultImports": true,
-        // 指定 jsx 代码的生成: 'preserve', 'react-native', or 'react'
-        "jsx": "preserve",
-        // 用来指定编译时是否生成.map文件
-        "sourceMap": true,
-        // 通过为导入内容创建命名空间，实现CommonJS和ES模块之间的互操作性
-        "esModuleInterop": true,
-        // 是否可以导入 json module
-        "resolveJsonModule": true,
-        // 是否检测定义了但是没使用的变量
-        "noUnusedLocals": true,
-        // 是否检查是否有在函数体中没有使用的参数
-        "noUnusedParameters": true,
-        // 是否启用实验性的装饰器特性
-        "experimentalDecorators": true,
-        // ts中可以使用的库 这里配置为 dom 与 es模块
-        "lib": ["dom", "esnext"],
-        // 不允许变量或函数参数具有隐式any类型
-        "noImplicitAny": false,
-        // 启用阻止对下载库的类型检查
-        "skipLibCheck": true,
-        // types用来指定需要包含的模块
-        "types": ["vite/client", "element-plus/global"],
-        // 编译的时候删除注释
-        "removeComments": true,
-        // 使用绝对路径时使用baseUrl去解析导入路径
-        "baseUrl": ".",
-        // 为导入路径配置别名
-        "paths": {
-            "@/*": ["src/*"],
-            "#/*": ["types/*"]
-        },
-        // 配置虚拟目录
-        "rootDirs": []
-    },
-    // 指定需要编译文件
-    "include": [
-        "src/**/*.ts",
-        "src/**/*.d.ts",
-        "src/**/*.tsx",
-        "src/**/*.vue",
-        "types/**/*.d.ts",
-        "types/**/*.ts",
-        "build/**/*.ts",
-        "build/**/*.d.ts",
-        "mock/**/*.ts",
-        "vite.config.ts"
-    ],
-        // 指定不需要编译的文件
-        "exclude": ["node_modules", "dist", "**/*.js"]
+   "compilerOptions": {
+      // 编译出JS的目标ES版本
+      "target": "esnext",
+      // 使用的ES版本
+      "module": "esnext",
+      // 用于选择模块解析策略，有'node'和'classic'两种类型
+      "moduleResolution": "node",
+      // 开启严格模式
+      "strict": true,
+      // 强制代码中使用的模块文件名必须和文件系统中的文件名保持大小写一致
+      "forceConsistentCasingInFileNames": true,
+      // 允许使用 xxx 代替 * as xxx 导入
+      "allowSyntheticDefaultImports": true,
+      // 指定 jsx 代码的生成: 'preserve', 'react-native', or 'react'
+      "jsx": "preserve",
+      // 用来指定编译时是否生成.map文件
+      "sourceMap": true,
+      // 通过为导入内容创建命名空间，实现CommonJS和ES模块之间的互操作性
+      "esModuleInterop": true,
+      // 是否可以导入 json module
+      "resolveJsonModule": true,
+      // 是否检测定义了但是没使用的变量
+      "noUnusedLocals": true,
+      // 是否检查是否有在函数体中没有使用的参数
+      "noUnusedParameters": true,
+      // 是否启用实验性的装饰器特性
+      "experimentalDecorators": true,
+      // ts中可以使用的库 这里配置为 dom 与 es模块
+      "lib": ["dom", "esnext"],
+      // 不允许变量或函数参数具有隐式any类型
+      "noImplicitAny": false,
+      // 启用阻止对下载库的类型检查
+      "skipLibCheck": true,
+      // types用来指定需要包含的模块
+      "types": ["vite/client", "element-plus/global"],
+      // 编译的时候删除注释
+      "removeComments": true,
+      // 使用绝对路径时使用baseUrl去解析导入路径
+      "baseUrl": ".",
+      // 为导入路径配置别名
+      "paths": {
+         "@/*": ["src/*"],
+         "#/*": ["types/*"]
+      },
+      // 配置虚拟目录
+      "rootDirs": []
+   },
+   // 指定需要编译文件
+   "include": [
+      "src/**/*.ts",
+      "src/**/*.d.ts",
+      "src/**/*.tsx",
+      "src/**/*.vue",
+      "types/**/*.d.ts",
+      "types/**/*.ts",
+      "build/**/*.ts",
+      "build/**/*.d.ts",
+      "mock/**/*.ts",
+      "vite.config.ts"
+   ],
+   // 指定不需要编译的文件
+   "exclude": ["node_modules", "dist", "**/*.js"]
 }
 ```
 
@@ -638,11 +648,6 @@ pnpm run dev
 
 一个基础的 Vue3+TypeScrpit+Vite 的项目就此构造完毕！
 
-后续文章：
-
-- **封装模块化**：axios，store，router模块化使用（待更新）
-- **规范团队开发**：向项目中集成CommitLInt，ESLint，Prettier，StyleLint（待更新）
-- **提高开发效率**：Mock.js进行数据模拟，告别后端摆烂。Plop快速生成模板文件！（待更新）
 
 > 如果对你有帮助的话，请给我点个赞吧👍
 >

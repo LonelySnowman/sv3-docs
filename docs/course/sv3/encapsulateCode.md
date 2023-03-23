@@ -37,45 +37,45 @@
 ```ts
 // 传入状态码获取对应提示信息
 export const getMessage = (status: number | string): string => {
-    let message = '';
-    switch (status) {
-        case 400:
-            message = '请求错误(400)';
-            break;
-        case 401:
-            message = '未授权，请重新登录(401)';
-            break;
-        case 403:
-            message = '拒绝访问(403)';
-            break;
-        case 404:
-            message = '请求出错(404)';
-            break;
-        case 408:
-            message = '请求超时(408)';
-            break;
-        case 500:
-            message = '服务器错误(500)';
-            break;
-        case 501:
-            message = '服务未实现(501)';
-            break;
-        case 502:
-            message = '网络错误(502)';
-            break;
-        case 503:
-            message = '服务不可用(503)';
-            break;
-        case 504:
-            message = '网络超时(504)';
-            break;
-        case 505:
-            message = 'HTTP版本不受支持(505)';
-            break;
-        default:
-            message = `连接出错(${status})!`;
-    }
-    return `${message}，请检查网络或联系管理员！`;
+   let message = '';
+   switch (status) {
+      case 400:
+         message = '请求错误(400)';
+         break;
+      case 401:
+         message = '未授权，请重新登录(401)';
+         break;
+      case 403:
+         message = '拒绝访问(403)';
+         break;
+      case 404:
+         message = '请求出错(404)';
+         break;
+      case 408:
+         message = '请求超时(408)';
+         break;
+      case 500:
+         message = '服务器错误(500)';
+         break;
+      case 501:
+         message = '服务未实现(501)';
+         break;
+      case 502:
+         message = '网络错误(502)';
+         break;
+      case 503:
+         message = '服务不可用(503)';
+         break;
+      case 504:
+         message = '网络超时(504)';
+         break;
+      case 505:
+         message = 'HTTP版本不受支持(505)';
+         break;
+      default:
+         message = `连接出错(${status})!`;
+   }
+   return `${message}，请检查网络或联系管理员！`;
 };
 ```
 
@@ -359,59 +359,59 @@ import { refreshUserInfo, userLogin } from '@/api/user';
 import router from '@/router';
 
 export const useUserStoreHook = defineStore(
-    // 唯一ID
-    'User',
-    {
-        state: () => ({
-            username: '游客',
-            accessToken: '',
-            roles: ['common'],
-        }),
-        getters: {},
-        actions: {
-            // 用于更新store数据
-            // UserState为定义好的state类型
-            updateInfo(partial: Partial<UserState>) {
-                this.$patch(partial);
-            },
-            // 用户登录
-            storeUserLogin(data) {
-                return userLogin(data).then((res) => {
-                    this.username = res.username;
-                    this.roles = res.roles;
-                    this.accessToken = res.accessToken;
-                    return res;
-                });
-            },
-            // 刷新用户信息
-            refreshUserInfo() {
-                if (this.username == '游客' && this.accessToken != '') {
-                    refreshUserInfo({
-                        accessToken: this.accessToken,
-                    })
-                        .then((res) => {
-                            this.username = res.username;
-                            this.roles = res.roles;
-                            this.accessToken = res.accessToken;
-                        })
-                        .catch(() => {
-                            this.accessToken = '';
-                        });
-                }
-            },
-        },
-        // 持久化保存 accessToken
-        persist: {
-            key: 'userInfo',
-            storage: sessionStorage,
-            paths: ['accessToken'],
-        },
-    }
+   // 唯一ID
+   'User',
+   {
+      state: () => ({
+         username: '游客',
+         accessToken: '',
+         roles: ['common'],
+      }),
+      getters: {},
+      actions: {
+         // 用于更新store数据
+         // UserState为定义好的state类型
+         updateInfo(partial: Partial<UserState>) {
+            this.$patch(partial);
+         },
+         // 用户登录
+         storeUserLogin(data) {
+            return userLogin(data).then((res) => {
+               this.username = res.username;
+               this.roles = res.roles;
+               this.accessToken = res.accessToken;
+               return res;
+            });
+         },
+         // 刷新用户信息
+         refreshUserInfo() {
+            if (this.username == '游客' && this.accessToken != '') {
+               refreshUserInfo({
+                  accessToken: this.accessToken,
+               })
+                  .then((res) => {
+                     this.username = res.username;
+                     this.roles = res.roles;
+                     this.accessToken = res.accessToken;
+                  })
+                  .catch(() => {
+                     this.accessToken = '';
+                  });
+            }
+         },
+      },
+      // 持久化保存 accessToken
+      persist: {
+         key: 'userInfo',
+         storage: sessionStorage,
+         paths: ['accessToken'],
+      },
+   }
 );
 
 // 导出该Store
 export function useUserStore() {
-    return useUserStoreHook(pinia);
+   return useUserStoreHook(pinia);
 }
 ```
 
@@ -430,10 +430,6 @@ vue3技术栈的常用的基础封装就完成了，每个人的封装习惯各�
 
 一个基础的 Vue3+TypeScrpit+Vite 的项目就此构造完毕！
 
-后续文章：
-
-- **规范团队开发**：向项目中集成CommitLInt，ESLint，Prettier，StyleLint（待更新）
-- **提高开发效率**：Mock.js进行数据模拟，告别后端摆烂。Plop快速生成模板文件！（待更新）
 
 > 如果对你有帮助的话，请给我点个赞吧👍
 >
