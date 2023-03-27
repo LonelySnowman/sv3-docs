@@ -2,8 +2,6 @@
 
 > hello大家好我是雪人⛄，不知不觉断更好久了😄，经过了长时间的学习，终于踏入了前端工程化的大门，大家再日常开发中总是会用到一个开发工具：脚手架，大家在使用其他人的脚手架或者一些官方脚手架的时候，可能只懂得使用并不懂得如何实现，看到一些代码只是知其然不知其所以然，今天为大家带来一套教程，教大家入门“脚手架”，相信你一定会有所收获。
 >
-> 目前项目已开源且仍处于开发阶段，后续会更新更多内容，如有不正确的地方请大家指正，我会及时更新并纠正我的错误。
->
 > - **GitHub**：[LonelySnowman/sv3-template](https://github.com/LonelySnowman/sv3-template)
 > - **官方文档**：[SV3-Family | Vue3](https://sv3-docs.snowhouse.space/)
 
@@ -19,11 +17,6 @@
 - 使用 CommitLint，ESLint，StyleLint，Prettier，LintStage 进行团队项目规范
 - 使用 Mock.js 模拟数据，使用 plop 快速生成开发模板
 - 使用 ElementPlus 组件库
-
-**参考学习项目**：
-
-- [fast-vue3](https://github.com/tobe-fe-dalao/fast-vue3)
-- [vue-pure-admin](https://github.com/pure-admin/vue-pure-admin)
 
 ## 确定项目目录结构
 
@@ -648,7 +641,20 @@ pnpm run dev
 
 一个基础的 Vue3+TypeScrpit+Vite 的项目就此构造完毕！
 
+**系列文章**：
 
-> 如果对你有帮助的话，请给我点个赞吧👍
+- [【从零到一手撕脚手架 | 第一节】配置基础项目结构 Vite + TypeScrpit + Vue3 初始化项目](https://juejin.cn/post/7207615983950987320)
+- [【从零到一手撕脚手架 | 第二节】模块化封装 降低耦合度 封装 axios pinia router](https://juejin.cn/post/7209542304863649852)
+- [【从零到一手撕脚手架 | 第三节】项目集成CommitLInt+ESLint+Prettier+StyleLint+LintStaged](https://juejin.cn/post/7213310111623725117)
+- [【从零到一手撕脚手架 | 第四节】加速开发效率 使用plop生成开发模板 使用mock进行数据模拟](https://juejin.cn/post/7214759986802294844)
+
+**参考学习项目**：
+
+- [fast-vue3](https://github.com/tobe-fe-dalao/fast-vue3)
+- [vue-pure-admin](https://github.com/pure-admin/vue-pure-admin)
+
+> 如果有任何不正确的地方请指正，我会及时更改。
+>
+> 更文不易，如果对你有帮助的话，请给我点个赞吧👍
 >
 > 关注我，后续文章不迷路⛄

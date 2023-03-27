@@ -13,16 +13,16 @@
 ## 配置 ESLint
 
 - **ESLint** 是一个用来识别 **ECMAScript** 并且按照规则给出报告的代码检测工具，使用它可以避免低级错误和统一代码的风格。它拥有以下功能：
-    - 查出 JavaScript 代码语法问题。
-    - 根据配置的规则，标记不符合规范的代码。
-    - 自动修复一些结构、风格问题。
+  - 查出 JavaScript 代码语法问题。
+  - 根据配置的规则，标记不符合规范的代码。
+  - 自动修复一些结构、风格问题。
 
 - 防止代码成为shi山😀，可以帮我们检查有没有死循环，有没有定义但未使用的变量等等。
 - **ESLint官方文档**：[ESLint - Pluggable JavaScript linter - ESLint中文](https://eslint.cn/)
 
 ### 安装依赖
 
-    ```bash
+```bash
 pnpm install -D eslint @eslint/create-config
 ```
 
@@ -30,12 +30,12 @@ pnpm install -D eslint @eslint/create-config
 
 ### 生成配置文件
 
-    ```bash
+```bash
 #  生成 ESLint 配置文件模板
 npx eslint --init
 ```
 
-    ```bash
+```bash
 # 出现如下选择
 
 # 选择2 我们会使用 prettier 进行代码风格校验
@@ -69,7 +69,7 @@ What format do you want your config file to be in?
 1.JavaScript
 2.YAML
 3.JSON
-
+ 
 # 是否立即安装需要的依赖
 Would you like to install them now?
 # 会帮我们安装如下插件
@@ -86,48 +86,48 @@ Would you like to install them now?
 
 ```js
 module.exports = {
-   // 使 eslint 支持 node 与 ES6
-   env: {
-      browser: true,
-      es2021: true,
-      node: true,
-   },
-   // 引入推荐的语法校验规则
-   extends: [
-      'plugin:vue/vue3-recommended',
-      'plugin:@typescript-eslint/recommended',
-   ],
-   overrides: [],
-   /* 
-   这里一定要配置对 先使用vue-eslint-parser 再使用@typescript-eslint/parser
-   先解析 <template> 标签中的内容 然后再解析 vue <script> 标签中的 TS 代码
-   */
-   // 选择使用的解析器
-   parser: 'vue-eslint-parser',
-   // 解析器的详细配置
-   parserOptions: {
-      // 使用最新版 ES 语法
-      ecmaVersion: 'latest',
-      // 使用 ESLint TS 解析器
-      parser: '@typescript-eslint/parser',
-      // 使用 ES 模块化规范
-      sourceType: 'module',
-   },
-   // 使用的插件
-   plugins: ['vue', '@typescript-eslint'],
-   // 自定义规则
-   rules: {},
+  // 使 eslint 支持 node 与 ES6
+  env: {
+    browser: true,
+    es2021: true,
+    node: true,
+  },
+  // 引入推荐的语法校验规则
+  extends: [
+    'plugin:vue/vue3-recommended',
+    'plugin:@typescript-eslint/recommended',
+  ],
+  overrides: [],
+  /* 
+  这里一定要配置对 先使用vue-eslint-parser 再使用@typescript-eslint/parser
+  先解析 <template> 标签中的内容 然后再解析 vue <script> 标签中的 TS 代码
+  */
+  // 选择使用的解析器
+  parser: 'vue-eslint-parser',
+  // 解析器的详细配置
+  parserOptions: {
+    // 使用最新版 ES 语法
+    ecmaVersion: 'latest',
+    // 使用 ESLint TS 解析器
+    parser: '@typescript-eslint/parser',
+    // 使用 ES 模块化规范
+    sourceType: 'module',
+  },
+  // 使用的插件
+  plugins: ['vue', '@typescript-eslint'],
+  // 自定义规则
+  rules: {},
 };
 ```
 
 - 配置完规则后我们配置一条指令用于代码质量的修复
 
-    ```js
+```js
 // package.json
 // --cache 为仅检测改动过的代码
 // --max-warnings 0 表示出现超过0个警告强制eslint以错误状态推出
 "scripts": {
-"lint:eslint": "eslint --cache --max-warnings 0 {src,mock}/**/*.{vue,ts,tsx} --fix",
+  "lint:eslint": "eslint --cache --max-warnings 0 {src,mock}/**/*.{vue,ts,tsx} --fix",
 },
 ```
 
@@ -174,7 +174,7 @@ Dockerfile
 
 ### 安装依赖
 
-    ```bash
+```bash
 pnpm install -D prettier
 ```
 
@@ -183,7 +183,7 @@ pnpm install -D prettier
 - Prettier配置文件名称可以为：`.ptettierrc.js`、`.ptettier.config.js` （根据个人习惯选择即可）
 - 下面是我常用的一些配置，更多配置规则大家可以前官网查看：[Options · Prettier 中文网](https://www.prettier.cn/docs/options.html)
 
-                                                                                        ```js
+```js
 module.exports = {
   printWidth: 80, //单行长度
   tabWidth: 2, //缩进长度
@@ -195,11 +195,11 @@ module.exports = {
 
 - 配置一个指令便于我们使用prettier进行修复代码风格
 
-    ```json
+```json
 {
-"script": {
-"lint:prettier": "prettier --write **/*.{js,json,tsx,css,less,scss,vue,html,md}",
-}
+  "script": {
+    "lint:prettier": "prettier --write **/*.{js,json,tsx,css,less,scss,vue,html,md}",
+  }
 }
 ```
 
@@ -207,7 +207,7 @@ module.exports = {
 
 #### 安装依赖
 
-    ```bash
+```bash
 pnpm install -D eslint-config-prettier eslint-plugin-prettier
 ```
 
@@ -216,13 +216,13 @@ pnpm install -D eslint-config-prettier eslint-plugin-prettier
 
 #### 配置ESLint
 
-    ```js
-// 此配置在eslint配置文件中新增
+```js
+// 此配置在eslint配置文件中新增 
 "extends": [
-"eslint:recommended",
-"plugin:vue/vue3-recommended",
-"plugin:@typescript-eslint/recommended",
-"plugin:prettier/recommended" // 在最后面新增extends
+  "eslint:recommended",
+  "plugin:vue/vue3-recommended",
+  "plugin:@typescript-eslint/recommended",
+  "plugin:prettier/recommended" // 在最后面新增extends
 ],
 ```
 
@@ -245,7 +245,7 @@ pnpm install -D eslint-config-prettier eslint-plugin-prettier
 
 ### 安装依赖
 
-    ```bash
+```bash
 pnpm install -D stylelint stylelint-config-standard
 
 pnpm install -D stylelint-config-prettier stylelint-config-html stylelint-order stylelint-scss postcss-html postcss-scss stylelint-config-standard-vue
@@ -264,133 +264,133 @@ pnpm install -D stylelint-config-prettier stylelint-config-html stylelint-order 
 
 ```js
 module.exports = {
-   // 继承推荐规范配置
-   extends: [
-      'stylelint-config-standard',
-      'stylelint-config-prettier',
-      'stylelint-config-recommended-scss',
-      'stylelint-config-standard-vue',
-   ],
-   // 添加规则插件
-   plugins: ['stylelint-order'],
-   // 不同格式的文件指定自定义语法
-   overrides: [
+  // 继承推荐规范配置
+  extends: [
+    'stylelint-config-standard',
+    'stylelint-config-prettier',
+    'stylelint-config-recommended-scss',
+    'stylelint-config-standard-vue',
+  ],
+  // 添加规则插件
+  plugins: ['stylelint-order'],
+  // 不同格式的文件指定自定义语法
+  overrides: [
+    {
+      files: ['**/*.(scss|css|vue|html)'],
+      customSyntax: 'postcss-scss',
+    },
+    {
+      files: ['**/*.(html|vue)'],
+      customSyntax: 'postcss-html',
+    },
+  ],
+  // 忽略检测文件
+  ignoreFiles: [
+    '**/*.js',
+    '**/*.jsx',
+    '**/*.tsx',
+    '**/*.ts',
+    '**/*.json',
+    '**/*.md',
+    '**/*.yaml',
+  ],
+  // 自定义配置规则
+  rules: {
+    // 便于配置变量 关闭未知属性检测
+    'property-no-unknown': null,
+    // 指定类选择器的模式
+    'selector-class-pattern': null,
+    // 允许 Vue 的 global
+    'selector-pseudo-class-no-unknown': [
+      true,
       {
-         files: ['**/*.(scss|css|vue|html)'],
-         customSyntax: 'postcss-scss',
+        ignorePseudoClasses: ['global'],
       },
+    ],
+    // 允许 Vue 的 v-deep
+    'selector-pseudo-element-no-unknown': [
+      true,
       {
-         files: ['**/*.(html|vue)'],
-         customSyntax: 'postcss-html',
+        ignorePseudoElements: ['v-deep'],
       },
-   ],
-   // 忽略检测文件
-   ignoreFiles: [
-      '**/*.js',
-      '**/*.jsx',
-      '**/*.tsx',
-      '**/*.ts',
-      '**/*.json',
-      '**/*.md',
-      '**/*.yaml',
-   ],
-   // 自定义配置规则
-   rules: {
-      // 便于配置变量 关闭未知属性检测
-      'property-no-unknown': null,
-      // 指定类选择器的模式
-      'selector-class-pattern': null,
-      // 允许 Vue 的 global
-      'selector-pseudo-class-no-unknown': [
-         true,
-         {
-            ignorePseudoClasses: ['global'],
-         },
-      ],
-      // 允许 Vue 的 v-deep
-      'selector-pseudo-element-no-unknown': [
-         true,
-         {
-            ignorePseudoElements: ['v-deep'],
-         },
-      ],
-      // 允许对应内核前缀
-      'property-no-vendor-prefix': null,
-      // 指定样式的排序 修复后会帮我们自动整理CSS样式的顺序
-      'order/properties-order': [
-         'position',
-         'top',
-         'right',
-         'bottom',
-         'left',
-         'z-index',
-         'display',
-         'justify-content',
-         'align-items',
-         'float',
-         'clear',
-         'overflow',
-         'overflow-x',
-         'overflow-y',
-         'padding',
-         'padding-top',
-         'padding-right',
-         'padding-bottom',
-         'padding-left',
-         'margin',
-         'margin-top',
-         'margin-right',
-         'margin-bottom',
-         'margin-left',
-         'width',
-         'min-width',
-         'max-width',
-         'height',
-         'min-height',
-         'max-height',
-         'font-size',
-         'font-family',
-         'text-align',
-         'text-justify',
-         'text-indent',
-         'text-overflow',
-         'text-decoration',
-         'white-space',
-         'color',
-         'background',
-         'background-position',
-         'background-repeat',
-         'background-size',
-         'background-color',
-         'background-clip',
-         'border',
-         'border-style',
-         'border-width',
-         'border-color',
-         'border-top-style',
-         'border-top-width',
-         'border-top-color',
-         'border-right-style',
-         'border-right-width',
-         'border-right-color',
-         'border-bottom-style',
-         'border-bottom-width',
-         'border-bottom-color',
-         'border-left-style',
-         'border-left-width',
-         'border-left-color',
-         'border-radius',
-         'opacity',
-         'filter',
-         'list-style',
-         'outline',
-         'visibility',
-         'box-shadow',
-         'text-shadow',
-         'resize',
-         'transition',
-      ],
-   },
+    ],
+    // 允许对应内核前缀
+    'property-no-vendor-prefix': null,
+    // 指定样式的排序 修复后会帮我们自动整理CSS样式的顺序
+    'order/properties-order': [
+      'position',
+      'top',
+      'right',
+      'bottom',
+      'left',
+      'z-index',
+      'display',
+      'justify-content',
+      'align-items',
+      'float',
+      'clear',
+      'overflow',
+      'overflow-x',
+      'overflow-y',
+      'padding',
+      'padding-top',
+      'padding-right',
+      'padding-bottom',
+      'padding-left',
+      'margin',
+      'margin-top',
+      'margin-right',
+      'margin-bottom',
+      'margin-left',
+      'width',
+      'min-width',
+      'max-width',
+      'height',
+      'min-height',
+      'max-height',
+      'font-size',
+      'font-family',
+      'text-align',
+      'text-justify',
+      'text-indent',
+      'text-overflow',
+      'text-decoration',
+      'white-space',
+      'color',
+      'background',
+      'background-position',
+      'background-repeat',
+      'background-size',
+      'background-color',
+      'background-clip',
+      'border',
+      'border-style',
+      'border-width',
+      'border-color',
+      'border-top-style',
+      'border-top-width',
+      'border-top-color',
+      'border-right-style',
+      'border-right-width',
+      'border-right-color',
+      'border-bottom-style',
+      'border-bottom-width',
+      'border-bottom-color',
+      'border-left-style',
+      'border-left-width',
+      'border-left-color',
+      'border-radius',
+      'opacity',
+      'filter',
+      'list-style',
+      'outline',
+      'visibility',
+      'box-shadow',
+      'text-shadow',
+      'resize',
+      'transition',
+    ],
+  },
 };
 ```
 
@@ -426,24 +426,24 @@ Git全部钩子的详细介绍：[Git - githooks Documentation (git-scm.com)](ht
 
 ### 安装依赖
 
-    ```bash
+```bash
 pnpm install -D husky
 ```
 
 然后配置一个初始化 Hysky 的命令
 
-    ```json
+```json
 // package.json
 {
-    "script": {
-        "prepare": "husky install"
-    }
+  "script": {
+    "prepare": "husky install"
+  }
 }
 ```
 
 运行这个命令
 
-    ```bash
+```bash
 # 运行后会初始化husky
 pnpm run prepare
 ```
@@ -457,7 +457,7 @@ pnpm run prepare
 
 ### 安装依赖
 
-    ```bash
+```bash
 pnpm install -D lint-staged
 ```
 
@@ -465,17 +465,17 @@ pnpm install -D lint-staged
 
 在 package.json 配置一个指令方便我们使用
 
-    ```json
+```json
 {
-"script":{
-"lint:lint-staged": "lint-staged",
-}
+  "script":{
+    "lint:lint-staged": "lint-staged",
+  }
 }
 ```
 
 使用 husky 配置一个 pre-commit 钩子
 
-    ```bash
+```bash
 # --no-install 代表强制使用本地模块
 npx husky add .husky/pre-commit "npm run lint:lint-staged"
 ```
@@ -489,7 +489,7 @@ LintStaged 的配置文件方式也有多种：
 
 这里我们直接在 `package.json` 中配置
 
-    ```json
+```json
 // 我们直接配置在 package.json 中
 /*
 配置的含义：
@@ -531,7 +531,7 @@ LintStaged 的配置文件方式也有多种：
 
 ### 安装依赖
 
-    ```bash
+```bash
 pnpm install -D @commitlint/cli  @commitlint/config-conventional
 ```
 
@@ -552,52 +552,52 @@ pnpm install -D @commitlint/cli  @commitlint/config-conventional
 <配置名称>: [<警报级别>, <是否启用>, <规则对应的值>]
 
 - 警报级别
-- 0 无提示 disable
-- 1 警告 warning
-- 2 错误 error
+  - 0 无提示 disable
+  - 1 警告 warning
+  - 2 错误 error
 - 是否启用
-- always 启用
-- never 禁用
+  - always 启用
+  - never 禁用
 - 规则对应的值：查看官方文档进行配置
 
-    ```js
+```js
 // 这里是通俗的解释 详情请前往官方文档查阅
 module.exports = {
-ignores: [(commit) => commit.includes('init')],
-extends: ['@commitlint/config-conventional'],
-rules: {
-// 信息以空格开头
-'body-leading-blank': [2, 'always'],
-'footer-leading-blank': [2, 'always'],
-// 信息最大长度
-'header-max-length': [2, 'always', 108],
-// 信息不能未空
-'subject-empty': [2, 'never'],
-// 信息类型不能未空
-'type-empty': [2, 'never'],
-// 提交信息的类型 下文有介绍
-'type-enum': [
-2,
-'always',
-[
-'feat',
-'fix',
-'perf',
-'style',
-'docs',
-'test',
-'refactor',
-'build',
-'ci',
-'chore',
-'revert',
-'wip',
-'workflow',
-'types',
-'release',
-],
-],
-},
+  ignores: [(commit) => commit.includes('init')],
+  extends: ['@commitlint/config-conventional'],
+  rules: {
+    // 信息以空格开头
+    'body-leading-blank': [2, 'always'],
+    'footer-leading-blank': [2, 'always'],
+    // 信息最大长度
+    'header-max-length': [2, 'always', 108],
+    // 信息不能未空
+    'subject-empty': [2, 'never'],
+    // 信息类型不能未空
+    'type-empty': [2, 'never'],
+    // 提交信息的类型 下文有介绍
+    'type-enum': [
+      2,
+      'always',
+      [
+        'feat',
+        'fix',
+        'perf',
+        'style',
+        'docs',
+        'test',
+        'refactor',
+        'build',
+        'ci',
+        'chore',
+        'revert',
+        'wip',
+        'workflow',
+        'types',
+        'release',
+      ],
+    ],
+  },
 };
 ```
 
@@ -615,7 +615,7 @@ rules: {
 
 ### 钩子配置
 
-    ```bash
+```bash
 # 配置 commit-msg 钩子 运行 commitlint
 # --no-install 代表强制使用本地模块
 npx husky add .husky/commit-msg "npx --no-install commitlint --edit $1"
@@ -639,6 +639,12 @@ git commit -m "fix: 修复首页用户头像不显示问题"
 
 终于配置完啦，用到的依赖实在是太多啦😭，配置的头都大了，希望日后能有一个库能集成它们的所有功能，这样就会方便的不止一点，待我日后成长起来，如果没人去搞⛏，我可以尝试一下（胡言乱语）。
 
+**系列文章**：
+
+- [【从零到一手撕脚手架 | 第一节】配置基础项目结构 Vite + TypeScrpit + Vue3 初始化项目](https://juejin.cn/post/7207615983950987320)
+- [【从零到一手撕脚手架 | 第二节】模块化封装 降低耦合度 封装 axios pinia router](https://juejin.cn/post/7209542304863649852)
+- [【从零到一手撕脚手架 | 第三节】项目集成CommitLInt+ESLint+Prettier+StyleLint+LintStaged](https://juejin.cn/post/7213310111623725117)
+- [【从零到一手撕脚手架 | 第四节】加速开发效率 使用plop生成开发模板 使用mock进行数据模拟](https://juejin.cn/post/7214759986802294844)
 
 **参考学习项目**：
 

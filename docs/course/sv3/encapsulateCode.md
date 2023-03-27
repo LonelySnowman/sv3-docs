@@ -2,18 +2,11 @@
 
 > Hello大家好我是⛄，前一节我们讲解了脚手架的基础项目搭建。接下来教大家将Vue技术栈常用的工具进行封装，让我们项目的代码更易维护。
 >
-> 目前项目已开源且仍处于开发阶段，后续会更新更多内容，如有不正确的地方请大家指正，我会及时更新并纠正我的错误。
->
 > - **GitHub**：[LonelySnowman/sv3-template](https://github.com/LonelySnowman/sv3-template)
 > - **官方文档**：[SV3-Family | Vue3](https://sv3-docs.snowhouse.space/)
 
 - 前置知识：Vue全家桶，了解Vite或WebPack等构建工具，Node.js
 - 您将收获到：从零到一构建一个规范的 Vue3+TS+Vite 脚手架
-
-**参考学习项目**：
-
-- [fast-vue3](https://github.com/tobe-fe-dalao/fast-vue3)
-- [vue-pure-admin](https://github.com/pure-admin/vue-pure-admin)
 
 ## 封装axios
 
@@ -430,7 +423,20 @@ vue3技术栈的常用的基础封装就完成了，每个人的封装习惯各�
 
 一个基础的 Vue3+TypeScrpit+Vite 的项目就此构造完毕！
 
+**系列文章**：
 
-> 如果对你有帮助的话，请给我点个赞吧👍
+- [【从零到一手撕脚手架 | 第一节】配置基础项目结构 Vite + TypeScrpit + Vue3 初始化项目](https://juejin.cn/post/7207615983950987320)
+- [【从零到一手撕脚手架 | 第二节】模块化封装 降低耦合度 封装 axios pinia router](https://juejin.cn/post/7209542304863649852)
+- [【从零到一手撕脚手架 | 第三节】项目集成CommitLInt+ESLint+Prettier+StyleLint+LintStaged](https://juejin.cn/post/7213310111623725117)
+- [【从零到一手撕脚手架 | 第四节】加速开发效率 使用plop生成开发模板 使用mock进行数据模拟](https://juejin.cn/post/7214759986802294844)
+
+**参考学习项目**：
+
+- [fast-vue3](https://github.com/tobe-fe-dalao/fast-vue3)
+- [vue-pure-admin](https://github.com/pure-admin/vue-pure-admin)
+
+> 如果有任何不正确的地方请指正，我会及时更改。
+>
+> 更文不易，如果对你有帮助的话，请给我点个赞吧👍
 >
 > 关注我，后续文章不迷路⛄

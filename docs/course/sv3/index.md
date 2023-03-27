@@ -47,4 +47,4 @@
 -  **第一节**：配置基础项目结构， Vite + TypeScrpit + Vue3 初始化项目
 -  **第二节**：模块化封装，axios，store，router模块化使用
 -  **第三节**：规范团队开发，向项目中集成CommitLInt，ESLint，Prettier，StyleLint
--  **第四节**：提高开发效率，Plop快速生成模板文件Mock.js进行数据模拟，告别后端摆烂
+-  **第四节**：提高开发效率，Plop快速生成模板文件Mock.js进行数据模拟
