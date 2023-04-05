@@ -3,21 +3,11 @@ import {DefaultTheme, defineConfig} from 'vitepress'
 const nav: DefaultTheme.NavItem[] = [
     { text: '项目介绍', link: '/introduce/' },
     {
-        text: '项目指南',
+        text: 'sv3-template',
         items: [
-            {text: 'sv3-template', link: '/guide/sv3/'},
-        ]
-    },
-    {
-        text: '搭建教程',
-        items: [
-            {text: 'sv3-template', link: '/course/sv3/'},
-        ]
-    },
-    {
-        text: '快速开始',
-        items: [
-            {text: 'sv3-template', link: '/guide/sv3/quickstart'},
+            {text: '快速开始', link: '/guide/sv3/quickstart'},
+            {text: '项目指南', link: '/guide/sv3/'},
+            {text: '搭建教程', link: '/course/sv3/'},
         ]
     },
 ]
