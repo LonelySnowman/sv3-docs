@@ -1,13 +1,75 @@
 # Axios
-使用 axios 进行Http请求
+使用 axios 进行 Http 请求，为便于使用进行了一些基础的封装，定义基本后端响应类型。
 
-## axios管理
+## 基本使用
+
+推荐按照下面的使用示例进行API的封装与使用
+
+- api被放置在 /src/api 中
+- index.ts 进行api请求的基本配置
+- types.ts 定义api的请求类型与返回类型
+
+### 新建 API
+
+- 引入我们在`/src/utils/http`下封装好的`axios`进行URL的传入并根据接口功能分类导出
+
+```ts
+// index.ts
+import { msgPost } from '@/utils/http';
+import { LoginRequest, LoginResponse, reLoginRequest } from '@/api/user/types';
+
+export const userLogin = async (data?: LoginRequest) => {
+    return msgPost<LoginResponse>({}, '/login', data);
+};
+
+export const refreshUserInfo = async (data?: reLoginRequest) => {
+    return msgPost<LoginResponse>({}, '/getUserInfo', data);
+};
+```
+
+```ts
+// types.ts
+export type LoginRequest = {
+   username: string;
+   password: string;
+};
+
+export type reLoginRequest = {
+   accessToken: string;
+};
+
+export type LoginResponse = {
+   username: string;
+   roles: Array<string>;
+   accessToken: string;
+};
+```
+
+### 使用API
+
+- 直接引入我们封装好的API调用即可
+
+```ts
+import { refreshUserInfo, userLogin } from '@/api/user';
+userLogin(data).then((res) => {
+    // 接口逻辑处理
+});
+```
+
+
+
+## Axios根目录
+
 - axios被放置在 /src/utils/http 中
 - index.ts 进行axios的基本配置
 - status.ts 对状态码对于的消息进行设置
 - types.ts 定义后端基础返回的 data 类型
-### axios基础配置
-```js
+
+### Axios拦截器
+
+- `/src/utils/http/index.ts`可以进行axios拦截器的封装
+
+```ts
 // index.ts
 // 创建axios实例并设置axios拦截器
 import axios from 'axios';
@@ -55,10 +117,27 @@ service.interceptors.response.use(
    }
 );
 ```
-### 二次处理接口返回数据并发出消息提示
-```js
-// T 为 res.data.data 的类型
-// BaseResponse 为 res.data 的类型
+
+### 统一接口规范
+
+- `/src/utils/http/types.ts`封装了后端返回的基础响应类型
+- 此处与后端人员配合进行接口的规范
+
+```ts
+// types.ts
+// 暴露 res.data 的类型
+export interface BaseResponse<T = any> {
+    code: number | string;
+    message: string;
+    data: T;
+}
+```
+
+### 请求方法封装
+
+- 这里封装的请求方法让我们的响应根据状态码做出相应提示
+
+```ts
 // 此处相当于响应拦截
 // 为响应数据进行定制化处理
 const msgRequest = <T = any>(config: AxiosRequestConfig): Promise<T> => {
@@ -88,8 +167,12 @@ const msgRequest = <T = any>(config: AxiosRequestConfig): Promise<T> => {
 };
 ```
 
-### 暴露需要发送消息的POST请求
-```js
+### 封装 post/get 请求
+
+- 此处将我们配置好拦截器的`axios`根据请求方式不同进行封装
+
+```ts
+// 封装我们刚刚封装好的带 msg 提示的请求
 export function msgPost<T = any, U = any>(
    config: AxiosRequestConfig,
    url: string,
@@ -97,10 +180,8 @@ export function msgPost<T = any, U = any>(
 ): Promise<T> {
    return msgRequest({ ...config, url, method: 'POST', data: data });
 }
-```
 
-### 暴无需发送消息/处理的POST请求
-```js
+// 封装配置拦截器的请求
 export function post<T = any, U = any>(
     config: AxiosRequestConfig,
     url: string,
@@ -108,104 +189,12 @@ export function post<T = any, U = any>(
 ): Promise<T> {
     return service.request({ ...config, url, method: 'POST', data: data });
 }
-```
 
-### 统一接口规范
-```js
-// types.ts
-// 暴露 res.data 的类型
-// 此处与后端人员配合进行接口的规范
-export interface BaseResponse<T = any> {
-    code: number | string;
-    message: string;
-    data: T;
+export function get<T = any, U = any>(
+    config: AxiosRequestConfig,
+    url: string,
+    data: U
+): Promise<T> {
+    return service.request({ ...config, url, method: 'GET', data: data });
 }
-```
-
-### 处理http响应码
-```js
-// status.ts
-// 此处暴露方法，返回对应状态码所对应的中文提示信息
-// 便于提示用户发现问题
-export const getMessage = (status: number | string): string => {
-    let message = '';
-    switch (status) {
-        case 400:
-            message = '请求错误(400)';
-            break;
-        case 401:
-            message = '未授权，请重新登录(401)';
-            break;
-        case 403:
-            message = '拒绝访问(403)';
-            break;
-        case 404:
-            message = '请求出错(404)';
-            break;
-        case 408:
-            message = '请求超时(408)';
-            break;
-        case 500:
-            message = '服务器错误(500)';
-            break;
-        case 501:
-            message = '服务未实现(501)';
-            break;
-        case 502:
-            message = '网络错误(502)';
-            break;
-        case 503:
-            message = '服务不可用(503)';
-            break;
-        case 504:
-            message = '网络超时(504)';
-            break;
-        case 505:
-            message = 'HTTP版本不受支持(505)';
-            break;
-        default:
-            message = `连接出错(${status})!`;
-    }
-    return `${message}，请检查网络或联系管理员！`;
-};
-```
-
-## api管理
-- api被放置在 /src/api 中
-- index.ts 进行api请求的基本配置
-- types.ts 定义api的请求类型与返回类型
-### api基础配置
-```js
-// index.ts
-import { msgPost } from '@/utils/http';
-import { LoginRequest, LoginResponse, reLoginRequest } from '@/api/user/types';
-
-export const userLogin = async (data?: LoginRequest) => {
-    return msgPost<LoginResponse>({}, '/login', data);
-};
-
-export const refreshUserInfo = async (data?: reLoginRequest) => {
-    return msgPost<LoginResponse>({}, '/getUserInfo', data);
-};
-
-```
-
-### api类型管理
-```js
-// types.ts
-export type LoginRequest = {
-   username: string;
-   password: string;
-};
-
-export type reLoginRequest = {
-   accessToken: string;
-};
-
-export type LoginResponse = {
-   username: string;
-   roles: Array<string>;
-   accessToken: string;
-};
-
 ```

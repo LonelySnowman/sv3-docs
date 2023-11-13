@@ -1,8 +1,12 @@
 # 跨域
 
+推荐使用 Vite Proxy 进行本地代理解决开发跨域问题
+
 ## Vite Proxy
-- 使用Vite proxy配置进行跨域
+
+- 开启 Vite Proxy
 - 原理就是本地开启node服务进行代理
+
 ```js
       server: {
          https: false,

@@ -1,4 +1,4 @@
-import {DefaultTheme, defineConfig} from 'vitepress'
+import { DefaultTheme, defineConfig } from 'vitepress'
 
 const nav: DefaultTheme.NavItem[] = [
     { text: '项目介绍', link: '/introduce/' },
@@ -7,7 +7,6 @@ const nav: DefaultTheme.NavItem[] = [
         items: [
             {text: '快速开始', link: '/guide/sv3/quickstart'},
             {text: '项目指南', link: '/guide/sv3/'},
-            {text: '搭建教程', link: '/course/sv3/'},
         ]
     },
 ]
@@ -43,27 +42,10 @@ const sidebar: DefaultTheme.Sidebar = {
             ]
         },
     ],
-    '/course/sv3': [
-        {
-            text: '基本介绍',
-            items: [
-                {text: '教程简介', link: '/course/sv3/'},
-            ]
-        },
-        {
-            text: '搭建脚手架',
-            items: [
-                {text: '搭建基础项目', link: '/course/sv3/createBaseProject'},
-                {text: '封装常用工具', link: '/course/sv3/encapsulateCode'},
-                {text: '团队协作规范', link: '/course/sv3/standardCode'},
-                {text: '提高开发效率', link: '/course/sv3/increaseEfficiency'},
-            ]
-        },
-    ],
 }
 
 export default defineConfig({
-    title: 'SV3-Family',
+    title: 'SV3-Template',
     lang: 'cn-ZH',
     base: '/',
     head: [
@@ -75,11 +57,20 @@ export default defineConfig({
     lastUpdated: true,
     themeConfig: {
         logo: '/logo.png',
-        siteTitle: 'SV3-Family',
+        siteTitle: 'SV3-Template',
         socialLinks: [
             { icon: 'github', link: 'https://github.com/LonelySnowman' }
         ],
+        footer: {
+            message: 'Released under the MIT License',
+            copyright: 'LonelySnowman © 2023'
+        },
+        outline: {
+            label: '页面目录',
+            level: 'deep'
+        },
+        lastUpdatedText: '最后更新时间',
         nav,
-        sidebar
+        sidebar,
     },
 })
