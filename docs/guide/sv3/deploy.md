@@ -11,7 +11,7 @@ pnpm run build
 
 ## nginx配置
 
-```editorconfig
+```txt
 server {
     location / {
         root   html;

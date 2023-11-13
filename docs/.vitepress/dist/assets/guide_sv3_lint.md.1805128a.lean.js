@@ -1,0 +1,1 @@
+import{_ as t,o as e,c as i,d as s}from"./app.a4c01adc.js";const u=JSON.parse('{"title":"项目规范","description":"","frontmatter":{},"headers":[],"relativePath":"guide/sv3/lint.md","lastUpdated":1699846681000}'),a={name:"guide/sv3/lint.md"},l=s("",7),r=[l];function n(c,_,o,p,d,m){return e(),i("div",null,r)}const f=t(a,[["render",n]]);export{u as __pageData,f as default};
